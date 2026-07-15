@@ -21,7 +21,7 @@ const Create = () => {
     e.preventDefault()
 
     try {
-        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/create`, productData)
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/products/create`, productData)
         toast.success("Product create successfully")
         navigate("/")
     } catch (error) {

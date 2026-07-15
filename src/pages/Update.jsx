@@ -17,7 +17,7 @@ const Update = () => {
   useEffect(() => {
     async function fetchProductData() {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/product/${id}`)
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/products/product/${id}`)
             const product = response.data.product
             setProductData(product)
         } catch (error) {
@@ -37,7 +37,7 @@ const Update = () => {
     e.preventDefault()
 
     try {
-        await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/update/${id}`, productData)
+        await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/products/update/${id}`, productData)
         navigate("/")
         toast.success("Product updated successfully")
     } catch (error) {

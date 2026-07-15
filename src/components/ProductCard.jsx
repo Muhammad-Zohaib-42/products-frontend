@@ -10,7 +10,7 @@ const ProductCard = ({_id, title, description, price}) => {
 
   async function deleteProduct() {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/delete/${_id}`)
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/v1/products/delete/${_id}`)
       setProducts(prev => prev.filter(product => product._id !== _id))
       navigate("/")
       toast.success("Product deleted successfully")

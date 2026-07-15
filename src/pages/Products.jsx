@@ -10,7 +10,7 @@ const Products = () => {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await axios.get(import.meta.env.VITE_BACKEND_URL)
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/products`)
         setProducts(response.data.products)
       } catch (error) {
         console.log(error)
