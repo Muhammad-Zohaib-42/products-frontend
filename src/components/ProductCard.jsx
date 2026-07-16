@@ -20,13 +20,15 @@ const ProductCard = ({_id, title, description, price}) => {
   }
 
   return (
-    <div className="px-6 py-4 rounded-lg shadow border border-slate-400">
-        <h2 className="text-2xl font-medium">{title}</h2>
-        <p className="leading-6 text-lg">{description}</p>
-        <p className="text-md text-slate-700">$<span>{price}</span></p>
+    <div className="px-6 py-4 rounded-lg shadow border border-slate-400 flex flex-col">
+        <div className="grow">
+          <h2 className="text-2xl font-medium">{title}</h2>
+          <p className="leading-6 text-lg">{description}</p>
+          <p className="text-md text-slate-700">$<span>{price}</span></p>
+        </div>
         <div className="flex items-center justify-end gap-2 mt-3">
-            <Link to={`/update/${_id}`} className="btn bg-blue-600 text-white">Update</Link>
-            <button onClick={deleteProduct} className="btn bg-red-600 text-white">Delete</button>
+            <Link to={`/update/${_id}`} className="btn bg-blue-600 hover:bg-blue-700 text-white">Update</Link>
+            <button onClick={deleteProduct} className="btn bg-red-600 hover:bg-red-700 text-white">Delete</button>
         </div>
     </div>
   )

@@ -5,18 +5,19 @@ import Header from "../components/Header"
 import { useProductsContext } from "../contexts/ProductsContext"
 
 const Products = () => {
-  const {products, setProducts, loading, setLoading} = useProductsContext()
+  const {products, setProducts, loading, setLoading, error, setError} = useProductsContext()
 
   useEffect(() => {
     async function fetchProducts() {
       setLoading(true)
+      setError("")
       try {
         const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/products`)
         setProducts(response.data.products)
         setLoading(false)
       } catch (error) {
         console.log(error)
-        setLoading(false)
+        setError("failed to Load Products! Please try again.")
       }
     }
     
@@ -26,8 +27,11 @@ const Products = () => {
   return (
     <>
       <Header />
-      <main className="p-10">
+      <main className="p-10 pt-5">
         {
+          error ?
+          <h3 className="text-xl">{error}</h3>
+          :
           loading ?
           <h3 className="text-xl">Loading Products! wait...</h3>
           :
